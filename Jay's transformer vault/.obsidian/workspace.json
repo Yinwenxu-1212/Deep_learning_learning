@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ea3b5d2f1d25ef03",
+        "id": "3e0d653e960c9355",
         "type": "tabs",
         "children": [
           {
-            "id": "2530839dde54661c",
+            "id": "d75a080c7a160c91",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Self-attention.md",
-                "mode": "preview",
-                "source": true
+                "file": "Can language models be used for real-world urban-delivery route optimization.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Self-attention"
+              "title": "Can language models be used for real-world urban-delivery route optimization"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Self-attention.md",
+                "file": "Transformer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Self-attention 的反向链接列表"
+              "title": "Transformer 的反向链接列表"
             }
           },
           {
@@ -147,7 +147,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -160,20 +160,26 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "2530839dde54661c",
+  "active": "d75a080c7a160c91",
   "lastOpenFiles": [
-    "Pasted image 20241227185331.png",
-    "Pasted image 20241227183415.png",
-    "Pasted image 20241226212113.png",
-    "Pasted image 20241226210040.png",
-    "Pasted image 20241226200414.png",
-    "Pasted image 20241226195030.png",
-    "Pasted image 20241226194617.png",
-    "Pasted image 20241226194052.png",
-    "{7734D87E-552D-410B-98ED-2E53174495B5}.png",
-    "Pasted image 20241226192742.png",
-    "2024-12-26.md",
+    "Pasted image 20250109170324.png",
+    "Pasted image 20250109162659.png",
+    "Pasted image 20250109162337.png",
+    "Pasted image 20250109161627.png",
+    "Pasted image 20250109160847.png",
+    "Can language models be used for real-world urban-delivery route optimization.md",
+    "Transformer.md",
+    "未命名.md",
+    "Pasted image 20250107164340.png",
+    "ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!.md",
+    "Pasted image 20250107162440.png",
+    "Pasted image 20250107151721.png",
+    "Pasted image 20250107135848.png",
+    "Pasted image 20250106162518.png",
+    "Pasted image 20250106162305.png",
     "Self-attention.md",
+    "未命名",
+    "2024-12-26.md",
     "Welcome.md"
   ]
 }

@@ -30,7 +30,7 @@ tags:
  
 **1. 找出在序列中的相关的向量，用α代表两个向量的关联性，根据Query与Key计算两者的相似性或相关性（这里用的是两个向量的点积）**
 ![[Pasted image 20241226194052.png]]![[Pasted image 20241226194617.png]]![[Pasted image 20241226195030.png]]
-**α1左乘Wq，剩余的阿尔法左乘Wk，分别得到q1与k2，k3，k4·······一般来说α1也需要左乘Wq，得到k1。将q1与k1、k2、k3、k4······点乘可以得到相关系数α1,1 α1,2 α1,3（可以叫做attention score） ······ **
+**α1左乘Wq，剩余的阿尔法左乘Wk，分别得到q1与k2，k3，k4·······一般来说α1也需要左乘Wq，得到k1。将q1与k1、k2、k3、k4······点乘可以得到相关系数α1,1 α1,2 α1,3（可以叫做attention score） ······ 
 
 **2. 通过Soft-max机制，对相关系数进行归一化处理，得到α1,i'**
 ![[Pasted image 20241227183415.png]]
@@ -74,6 +74,35 @@ $$
 {\color{Red} 如果Q = I * W^q；K = I * W^k；V = I * W^v，则}
 $$
 ![[Pasted image 20241227185331.png]]
+```python
+def attention(query, key, value, mask=None, dropout=None):     """     实现注意力机制     """
+	# query，key,value：注意力的三个输入张量
+	# mask：掩码张量
+	# dropout：传入的Dropout实例化对象
+	# 获取query张量的最后一维大小，即查询向量的嵌入维度d_k
+	d_k = query.size(-1)  
+	# 计算相似度分数
+	# 将key的最后两维进行转置，使其从(batch_size, seq_len_k, d_k)变为(batch_size, d_k, seq_len_k)
+	# matmul即作两个张量矩阵相乘  
+	scores = torch.matmul(query, key.transpose(-2, -1)) / math.sqrt(d_k)   
+	# 应用掩码     
+	if mask is not None: 
+	# 将 scores 中对应 mask == 0 的位置填充为 `-1e9`（一个非常小的值，接近负无穷）
+	# 这是因为 softmax 的输出会接近 0，对于负无穷值几乎不会产生注意力。        
+		scores = scores.masked_fill(mask == 0, -1e9)
+	# 计算注意力权重
+	# 对scores的最后一维进行softmax操作        
+	p_attn = torch.softmax(scores, dim=-1)  
+	# 应用 Dropout
+	# Dropout 是一种正则化方法，用于随机将部分注意力权重置零，避免模型过拟合。     
+	if dropout is not None:         
+		p_attn = dropout(p_attn) 
+	# 加权求和得到输出       
+	output = torch.matmul(p_attn, value) 
+	# output：最终的注意力加权输出，形状为(batch_size, seq_len_q, d_v)`     
+	# p_attn：注意力权重，形状为 (batch_size, seq_len_q, seq_len_k)，表示每个查询对每个键的注意力分布。
+	return output, p_attn
+```
 ### 3.4 Multi-head Self-attention
 ![[Pasted image 20241226210040.png]]
 $$
